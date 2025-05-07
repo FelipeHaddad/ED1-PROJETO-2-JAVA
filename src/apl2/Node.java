@@ -16,11 +16,87 @@ package apl2;
 // getters e setters.
 // -- A classe também representa um nó que é usado na implementação da lista
 // duplamente encadeada (classe DLinkedList).
-// -- A classe deve sobrescrever (override) o método public String toString()
+// -- A classe deve sobrescrever (override) o metodo public String toString()
 // {...}, retornando uma string com os valores dos atributos da classe.
 
 public class Node {
-	
-	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
-	
+	private int ID;
+    private String nomePessoa;
+    private double notaPessoa;
+
+    private Node proximo;
+    private Node anterior;
+
+    public Node() {
+        this.ID = 0;
+        this.nomePessoa = "";
+        this.notaPessoa = 99.9;
+
+        this.proximo = null;
+        this.anterior = null;
+    }
+
+    public Node (int id, String nome, double nota, Node prox, Node ant) {
+        this.ID = id;
+        this.nomePessoa = nome;
+        this.notaPessoa = nota;
+        this.proximo = prox;
+        this.anterior = ant;
+        /*String IDString;
+        if (id < 10) {
+            IDString = ("00" + String.valueOf(id));
+        } else if (id < 100) {
+            IDString = ("0" + String.valueOf(id));
+        } else {
+            IDString = String.valueOf(id);
+        }
+        String notaPessoaString = String.valueOf(nota); */
+    }
+
+    // Getters
+    public int getId () {
+        return this.ID;
+    }
+
+    public String getNome () {
+        return this.nomePessoa;
+    }
+
+    public double getNota () {
+        return this.notaPessoa;
+    }
+
+    public Node getProximo () {
+        return this.proximo;
+    }
+
+    public Node getAnterior () {
+        return this.anterior;
+    }
+
+    // Setters
+    public void setId (int id) {
+        this.ID = id;
+    }
+
+    public void setNome (String nome) {
+        this.nomePessoa = nome;
+    }
+
+    public void setNota (double nota) {
+        this.notaPessoa = nota;
+    }
+
+    public void setProximo (Node prox) {
+        this.proximo = prox;
+    }
+
+    public void setAnterior (Node ant) {
+        this.anterior = ant;
+    }
+
+    public String toString() {
+        return "23.S1-" + this.ID + ";" + this.nomePessoa + ";" + notaPessoa;
+    }
+
 }
