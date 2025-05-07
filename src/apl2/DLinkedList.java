@@ -22,14 +22,25 @@ package apl2;
 
 public class DLinkedList {
 	
-	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
+	private Node head;
+	private Node tail;
+	private int count;
 
 
-// OPERAÇÃO:		Método construtor
+// OPERAÇÃO:		Metodo construtor
 // COMPORTAMENTO:	Cria uma lista vazia.
-	public DLinkedList() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+	public DLinkedList () {
+		this.head = null;
+		this.tail = null;
+		count = 0;
+	}
+
+// OPERAÇÃO: 		Metodo construtor
+// COMPORTAMENTO: 	Cria uma lista com parâmetros
+	public DLinkedList(Node head, Node tail, int count) {
+		this.head = head;
+		this.tail = tail;
+		count = 0;
 	}
 
 
@@ -119,10 +130,7 @@ public class DLinkedList {
 
 // OPERAÇÃO:		isEmpty()
 // COMPORTAMENTO:	Retorna true se a lista estiver vazia ou false, caso contrário.
-	public boolean isEmpty() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
-	}
+	public boolean isEmpty() {return head == null;}
 
 
 // OPERAÇÃO:		clear()
