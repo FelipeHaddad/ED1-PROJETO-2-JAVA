@@ -83,9 +83,15 @@ public class DLinkedList {
 		{
 			return null;
 		}
+		else if(this.head == this.tail){
+			return null;
+		}
+
 
 		Node removedNode = this.head;
 		this.head = head.getProximo();
+		this.head.setAnterior(null);
+		count--;
 
 		return removedNode;
 		
