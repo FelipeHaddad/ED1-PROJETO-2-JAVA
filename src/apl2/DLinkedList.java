@@ -134,8 +134,35 @@ public class DLinkedList {
 //					a referência do nó removido.
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node removeNode(String id) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		Node toRemove = head;
+		Node previous = null;
+
+		if (isEmpty()) {
+			return null;
+		}
+		while (toRemove != null && toRemove.getId() != id) {
+			previous = toRemove;
+			toRemove = toRemove.getProximo();
+		}
+
+		if (toRemove == null) {
+			return null;
+		}
+
+		if (toRemove == head) {
+			return removeHead();
+		}
+
+		if (toRemove == tail) {
+			return removeTail();
+		}
+
+		previous.setProximo(toRemove.getProximo());
+		toRemove.getProximo().setAnterior(previous);
+		count--;
+
+		toRemove.setProximo(null);
+		return toRemove;
 	}
 
 
@@ -143,9 +170,6 @@ public class DLinkedList {
 // COMPORTAMENTO:	Retorna uma referência para o nó do início da lista.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node getHead() {
-		
-
-
 		return head;
 	}
 
