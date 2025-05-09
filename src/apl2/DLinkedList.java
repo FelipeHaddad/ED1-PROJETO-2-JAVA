@@ -148,8 +148,18 @@ public class DLinkedList {
 //					da lista.
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node getNode(String id) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		int idProcurado = Integer.parseInt(id);  
+    	Node aux = head;
+
+		while (aux != null) {
+			if (aux.getId() == idProcurado) {  
+				return aux;
+			}
+			aux = aux.getProximo();
+		}
+		return null;
+
+
 	}
 
 
