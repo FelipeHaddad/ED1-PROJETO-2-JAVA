@@ -149,7 +149,7 @@ public class DLinkedList {
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node getNode(String id) {
 		int idProcurado = Integer.parseInt(id);  
-    	Node aux = head;
+    		Node aux = head;
 
 		while (aux != null) {
 			if (aux.getId() == idProcurado) {  
