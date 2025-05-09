@@ -108,9 +108,24 @@ public class DLinkedList {
 //					nó removido.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node removeTail() {
-		
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		if(this.head == null){
+			return null;
+		}
+		else if (this.head == this.tail){
+			Node removedTail = this.tail;
+			this.head = null;
+			this.tail = null;
+			count--;
+			return removedTail;
+		}
+
+		Node removedTail = this.tail;
+		this.tail = tail.getAnterior();
+		this.tail.setProximo(null);
+		count--;
+
+
+		return removedTail;
 	}
 
 
