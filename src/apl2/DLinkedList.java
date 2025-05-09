@@ -84,7 +84,11 @@ public class DLinkedList {
 			return null;
 		}
 		else if(this.head == this.tail){
-			return null;
+			Node removedNode = this.head;
+			this.head = null;
+			this.tail = null;
+			count--;
+			return removedNode;
 		}
 
 
@@ -104,6 +108,7 @@ public class DLinkedList {
 //					nó removido.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node removeTail() {
+		
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
 		throw new UnsupportedOperationException("Método ainda não implementado.");
 	}
@@ -123,6 +128,9 @@ public class DLinkedList {
 // COMPORTAMENTO:	Retorna uma referência para o nó do início da lista.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node getHead() {
+		
+
+
 		return head;
 	}
 
