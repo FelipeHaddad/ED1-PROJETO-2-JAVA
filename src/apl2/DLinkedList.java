@@ -79,6 +79,16 @@ public class DLinkedList {
 //					nó removido.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node removeHead() {
+		if(this.head == null)
+		{
+			return null;
+		}
+
+		Node removedNode = this.head;
+		this.head = head.getProximo();
+
+		return removedNode;
+		
 
 	}
 
