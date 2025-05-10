@@ -1,5 +1,5 @@
 //*************************** ATENÇÃO! ****************************
-// O método main() deve ser alterado somente nos comentários TODO.
+// O metodo main() deve ser alterado somente nos comentários TODO.
 // Todas as outras instruções devem permanecer intactas e o código
 // deve funcionar conforme descrito no enunciado da atividade.
 //*************************** ATENÇÃO! ****************************
@@ -13,12 +13,46 @@ import apl2.LinkedListOriginal;
 import apl2.Node;
 import apl2.Operation;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class MainApl2 {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		LinkedListOriginal list = new LinkedListOriginal();
+		DLinkedList novaLista = new DLinkedList();
 
-		
+		// Leitura do arquivo dados.txt
+		File arquivo = new File("dados.txt");
+		Scanner scanner = new Scanner(arquivo);
+
+		// Começa a ler o arquivo enquanto não chegar no fimw
+		while (scanner.hasNextLine()) {
+			String linha = scanner.nextLine();
+			System.out.println(linha);
+
+			// Divide os dados da linha pelo delimitador "#"
+			String[] partes = linha.split("#");
+
+			// Parse manual dos campos
+			int id = Integer.parseInt(partes[0]);
+			String nome = partes[1];
+			int parteInteira = Integer.parseInt(partes[2]);
+			int parteDecimal = Integer.parseInt(partes[3]);
+			double nota;
+
+			if (parteInteira < 0 || parteDecimal < 0) {
+				nota = 99.9;
+			} else {
+				nota = Double.parseDouble(parteInteira + "." + parteDecimal);
+			}
+			list.append(id, nome, parteInteira, parteDecimal);
+			novaLista.append(id, nome, nota);
+		}
+
+		scanner.close();
+
 		// TODO: Carregar o conteúdo do arquivo "dados.txt" e adicionar cada linha como um nó na LinkedListOriginal list.
 
 		
