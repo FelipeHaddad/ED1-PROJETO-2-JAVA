@@ -26,7 +26,6 @@ public class DLinkedList {
 	private Node tail;
 	private int count;
 
-
 // OPERAÇÃO:		Metodo construtor
 // COMPORTAMENTO:	Cria uma lista vazia.
 	public DLinkedList () {
@@ -47,27 +46,29 @@ public class DLinkedList {
 // OPERAÇÃO:		insert(<dados da pessoa>)
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no início da lista.
-	public void insert(int id, String nome, double nota, Node proximo) {
-		Node node = new Node(id, nome, nota, proximo, null);
-
+	public void insert(int id, String nome, double nota) {
+		Node node = new Node(id, nome, nota, this.head, null);
+		Node aux = node.getProximo();
 		if (isEmpty()) {
 			tail = node;
+		} else {
+			aux.setAnterior(node);
 		}
-
-		head = node;
+		this.head = node;
 		count++;
 	}
-
 
 // OPERAÇÃO:		append(<dados da pessoa>)
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no final da lista.
 	public void append(int id, String nome, double nota) {
 		Node node = new Node (id, nome, nota, null, null);
+
 		if (isEmpty()) {
 			this.head = node;
 		} else {
 			node.setAnterior(tail);
+			tail.setProximo(node);
 		}
 		this.tail = node;
 		count++;
@@ -90,16 +91,11 @@ public class DLinkedList {
 			count--;
 			return removedNode;
 		}
-
-
 		Node removedNode = this.head;
 		this.head = head.getProximo();
 		this.head.setAnterior(null);
 		count--;
-
 		return removedNode;
-		
-
 	}
 
 
@@ -133,7 +129,8 @@ public class DLinkedList {
 // COMPORTAMENTO:	Remove o nó que contém o <ID da pessoa> da lista e retorna
 //					a referência do nó removido.
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
-	public Node removeNode(String id) {
+	public Node removeNode(String idString) {
+		int id = Integer.parseInt(idString);
 		Node toRemove = head;
 		Node previous = null;
 
@@ -187,28 +184,23 @@ public class DLinkedList {
 //					da lista.
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node getNode(String id) {
-		int idProcurado = Integer.parseInt(id);  
-    		Node aux = head;
+		int idProcurado = Integer.parseInt(id);
+		Node aux = head;
 
 		while (aux != null) {
-			if (aux.getId() == idProcurado) {  
+			if (aux.getId() == idProcurado) {
 				return aux;
 			}
 			aux = aux.getProximo();
 		}
 		return null;
-
-
 	}
-
 
 // OPERAÇÃO:		count()
 // COMPORTAMENTO:	Retorna a quantidade de nós da lista.
 	public int count() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		return count;
 	}
-
 
 // OPERAÇÃO:		isEmpty()
 // COMPORTAMENTO:	Retorna true se a lista estiver vazia ou false, caso contrário.
@@ -218,18 +210,27 @@ public class DLinkedList {
 // OPERAÇÃO:		clear()
 // COMPORTAMENTO:	Esvazia a lista, liberando a memória de todos os nós da lista.
 	public void clear() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		while (!isEmpty()) {
+			removeHead();
+		}
 	}
-
 
 // OPERAÇÃO:		toString()
 // COMPORTAMENTO:	Retorna uma string com o conteúdo da lista (caso queira, use o
-//					exemplo do método toString() da classe LinkedListOriginal).
+//					exemplo do metodo toString() da classe LinkedListOriginal).
 	@Override
 	public String toString() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		String string = String.format("(%d) \n", count);
+
+		Node node = head;
+		while (node != null) {
+			string += ("(23.S1-" + node.getId() + ";" + node.getNome() + ";" + node.getNota() + ") -> \n");
+			node = node.getProximo();
+		}
+
+		string += ("null.");
+
+		return string;
 	}
 
 }
