@@ -24,8 +24,30 @@ public class Operation {
 	 * @return Uma nova {@code DLinkedList} que contém o mapeamento da coleção de dados {@code original} para a nova estrutura usada pelo sistema de notas. 
 	 */
 	public static DLinkedList map(final LinkedListOriginal original) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		DLinkedList novaLista = new DLinkedList();
+		NodeOriginal atualOriginal = original.getHead(); // Primeiro nó da lista original
+		while (atualOriginal != null) {
+            // Extrai os dados do nó original
+            int id = atualOriginal.getId();
+            String nome = atualOriginal.getNome();
+            int inteiro = atualOriginal.getInteiro();
+            int decimo = atualOriginal.getDecimo();
+
+            // Cria um novo nó para a lista duplamente encadeada (NodeDuplo)
+            Node novoNode = new Node();
+            novoNode.setId(id);     
+            novoNode.setNome(nome);   
+            novoNode.setNota(inteiro);
+            // ... Mapeie os outros campos conforme necessário para o seu sistema de notas
+
+            // Adiciona o novo nó à lista duplamente encadeada
+            novaLista.insert(id, nome, decimo);
+
+            // Move para o próximo nó na lista original
+            atualOriginal = atualOriginal.getNext();
+        }
+    	return novaLista; // Retorna a nova lista construída
+		
 	}
 
 	/**
