@@ -38,7 +38,7 @@ public class Operation {
             novoNode.setId(id);     
             novoNode.setNome(nome);   
             novoNode.setNota(inteiro);
-            novoNode.setNotadec(decimo);
+            // ... Mapeie os outros campos conforme necessário para o seu sistema de notas
 
             // Adiciona o novo nó à lista duplamente encadeada
             novaLista.insert(id, nome, decimo);
@@ -47,7 +47,6 @@ public class Operation {
             atualOriginal = atualOriginal.getNext();
         }
     	return novaLista; // Retorna a nova lista construída
-		
 	}
 
 	/**
@@ -60,9 +59,22 @@ public class Operation {
 	 * @return Uma nova {@code DLinkedList} que contém a coleção de dados ({@code data}) filtrada com nós que possuem apenas pessoas com notas válidas.
 	 */
 	public static DLinkedList filterRemoveNonGraded(final DLinkedList data) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+    	DLinkedList ListaFiltrada = new DLinkedList(); // Cria uma nova lista para armazenar os nós válidos
+    	Node atualNode = data.getHead(); // Pega o primeiro nó da lista original 'data'
+    	// Percorre a lista original enquanto houver nós
+    	while (atualNode != null) {
+        	// Verifica se a nota do nó é válida (ou seja, diferente de -1)
+        	if (atualNode.getNota() != -1) { 
+            	// Se a nota for válida, cria um novo nó e adiciona à lista filtrada
+            	ListaFiltrada.append(atualNode.getId(), atualNode.getNome(), atualNode.getNota());
+        	}
+        	// Move para o próximo nó na lista original
+        	atualNode = atualNode.getProximo();
+    	}
+    	// Retorna a lista filtrada com os nós que possuem notas válidas
+    	return ListaFiltrada;
 	}
+
 
 	/**
 	 * <p>Recebe como parâmetro uma lista duplamente encadeada do tipo {@code DLinkedList}, sendo que os nós da lista estão
