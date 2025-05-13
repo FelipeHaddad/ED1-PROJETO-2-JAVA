@@ -38,7 +38,7 @@ public class Operation {
             novoNode.setId(id);     
             novoNode.setNome(nome);   
             novoNode.setNota(inteiro);
-            // ... Mapeie os outros campos conforme necessário para o seu sistema de notas
+            novoNode.setNotadec(decimo);
 
             // Adiciona o novo nó à lista duplamente encadeada
             novaLista.insert(id, nome, decimo);
