@@ -109,8 +109,17 @@ public class Operation {
 	 * @return Uma nova {@code DLinkedList} que contém a coleção de dados ({@code data}) filtrada somente com pessoas com notas maiores do que {@code average}.
 	 */
 	public static DLinkedList filterRemoveBelowAverage(final DLinkedList data, float average) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		DLinkedList listaacimaMedia = new DLinkedList();
+		Node atualNode = data.getHead();
+		
+		while(atualNode!= null){
+			if(atualNode.getNota() > average){
+				listaacimaMedia.append(atualNode.getId(), atualNode.getNome(), atualNode.getNota());
+			}
+			atualNode = atualNode.getProximo();
+		}
+		return listaacimaMedia;
+
 	}
 	
 	/**
@@ -123,8 +132,20 @@ public class Operation {
 	 * @return Média das notas ({@code float}) contidas na coleção de dados ({@code data}).
 	 */
 	public static float reduce(final DLinkedList data) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		float soma = 0;
+		float quant = 0;
+		Node atualNode = data.getHead();
+		while(atualNode!= null ){
+			System.out.println(atualNode.getNota());
+				soma += atualNode.getNota();
+				quant++;
+
+
+			atualNode = atualNode.getProximo();
+		}
+		float average = soma/quant;
+		return average;
+		
 	}
 
 	/**
