@@ -136,7 +136,6 @@ public class Operation {
 		float quant = 0;
 		Node atualNode = data.getHead();
 		while(atualNode!= null ){
-			System.out.println(atualNode.getNota());
 				soma += atualNode.getNota();
 				quant++;
 

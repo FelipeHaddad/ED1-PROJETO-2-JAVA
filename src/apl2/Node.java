@@ -42,17 +42,7 @@ public class Node {
         this.notaPessoa = nota;
         this.proximo = prox;
         this.anterior = ant;
-        /*String IDString;
-        if (id < 10) {
-            IDString = ("00" + String.valueOf(id));
-        } else if (id < 100) {
-            IDString = ("0" + String.valueOf(id));
-        } else {
-            IDString = String.valueOf(id);
-        }
-        String notaPessoaString = String.valueOf(nota); */
     }
-
     // Getters
     public int getId () {
         return this.ID;
