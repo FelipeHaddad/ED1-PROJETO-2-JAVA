@@ -86,8 +86,15 @@ public class Operation {
 	 * @return Uma nova {@code DLinkedList} que contém a coleção de dados ({@code data}) filtrada com nós que possuem apenas pessoas com notas inválidas.
 	 */
 	public static DLinkedList filterRemoveGraded(final DLinkedList data) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+			DLinkedList listaFiltrada = new DLinkedList();
+			Node atualNode = data.getHead();
+			while(atualNode != null){
+				if(atualNode.getNota() == -1){
+					listaFiltrada.append(atualNode.getId(), atualNode.getNome(), atualNode.getNota());
+				}
+				atualNode = atualNode.getProximo();
+			}
+			return listaFiltrada;
 	}
 
 	/**
