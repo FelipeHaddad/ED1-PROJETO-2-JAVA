@@ -32,16 +32,23 @@ public class Operation {
             String nome = atualOriginal.getNome();
             int inteiro = atualOriginal.getInteiro();
             int decimo = atualOriginal.getDecimo();
+			double nota;
+
+			if (inteiro < 0 || decimo < 0) {
+				nota = 99.9;
+			} else {
+				nota = Double.parseDouble(inteiro + "." + decimo);
+			}
 
             // Cria um novo nó para a lista duplamente encadeada (NodeDuplo)
             Node novoNode = new Node();
             novoNode.setId(id);     
             novoNode.setNome(nome);   
-            novoNode.setNota(inteiro);
+            novoNode.setNota(nota);
             // ... Mapeie os outros campos conforme necessário para o seu sistema de notas
 
             // Adiciona o novo nó à lista duplamente encadeada
-            novaLista.insert(id, nome, decimo);
+            novaLista.insert(id, nome, nota);
 
             // Move para o próximo nó na lista original
             atualOriginal = atualOriginal.getNext();
@@ -64,7 +71,7 @@ public class Operation {
     	// Percorre a lista original enquanto houver nós
     	while (atualNode != null) {
         	// Verifica se a nota do nó é válida (ou seja, diferente de -1)
-        	if (atualNode.getNota() != -1) { 
+        	if (atualNode.getNota() != 99.9) { 
             	// Se a nota for válida, cria um novo nó e adiciona à lista filtrada
             	ListaFiltrada.append(atualNode.getId(), atualNode.getNome(), atualNode.getNota());
         	}
@@ -89,7 +96,7 @@ public class Operation {
 			DLinkedList listaFiltrada = new DLinkedList();
 			Node atualNode = data.getHead();
 			while(atualNode != null){
-				if(atualNode.getNota() == -1){
+				if(atualNode.getNota() == 99.9){
 					listaFiltrada.append(atualNode.getId(), atualNode.getNome(), atualNode.getNota());
 				}
 				atualNode = atualNode.getProximo();
@@ -136,10 +143,8 @@ public class Operation {
 		float quant = 0;
 		Node atualNode = data.getHead();
 		while(atualNode!= null ){
-				soma += atualNode.getNota();
-				quant++;
-
-
+			soma += atualNode.getNota();
+			quant++;
 			atualNode = atualNode.getProximo();
 		}
 		float average = soma/quant;
