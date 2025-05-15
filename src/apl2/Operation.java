@@ -48,7 +48,7 @@ public class Operation {
             // ... Mapeie os outros campos conforme necessário para o seu sistema de notas
 
             // Adiciona o novo nó à lista duplamente encadeada
-            novaLista.insert(id, nome, nota);
+            novaLista.append(id, nome, nota);
 
             // Move para o próximo nó na lista original
             atualOriginal = atualOriginal.getNext();
@@ -163,8 +163,20 @@ public class Operation {
 	 * @return {@code String} com a coleção de dados separada por ponto-e-vírgula (dados de cada pessoa) e quebras de linha (cada pessoa).
 	 */
 	public static String mapToString(final DLinkedList data) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		StringBuilder stringb = new StringBuilder();
+		Node atualNode = data.getHead();
+
+		while(atualNode != null){
+			stringb.append(atualNode.getId());
+			stringb.append(";");
+			stringb.append(atualNode.getNome());
+			stringb.append(";");
+			stringb.append(atualNode.getNota());
+			stringb.append("\n");
+			atualNode = atualNode.getProximo();
+		}
+		return stringb.toString();
+
 	}
 
 }

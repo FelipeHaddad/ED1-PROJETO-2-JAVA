@@ -224,7 +224,7 @@ public class DLinkedList {
 
 		Node node = head;
 		while (node != null) {
-			string += ("(23.S1-" + node.getId() + ";" + node.getNome() + ";" + node.getNota() + ") -> \n");
+			string += (" <- (23.S1-" + node.getId() + ";" + node.getNome() + ";" + node.getNota() + ") -> \n");
 			node = node.getProximo();
 		}
 

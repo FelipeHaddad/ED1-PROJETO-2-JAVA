@@ -30,7 +30,7 @@ public class MainApl2 {
 		// Começa a ler o arquivo enquanto não chegar no fimw
 		while (scanner.hasNextLine()) {
 			String linha = scanner.nextLine();
-			System.out.println(linha);
+			//System.out.println(linha);
 
 			// Divide os dados da linha pelo delimitador "#"
 			String[] partes = linha.split("#");
