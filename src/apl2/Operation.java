@@ -28,7 +28,7 @@ public class Operation {
 		NodeOriginal atualOriginal = original.getHead(); // Primeiro nó da lista original
 		while (atualOriginal != null) {
             // Extrai os dados do nó original
-            int id = atualOriginal.getId();
+            String id = atualOriginal.getId();
             String nome = atualOriginal.getNome();
             int inteiro = atualOriginal.getInteiro();
             int decimo = atualOriginal.getDecimo();
