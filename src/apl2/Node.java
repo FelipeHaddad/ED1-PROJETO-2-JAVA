@@ -20,7 +20,7 @@ package apl2;
 // {...}, retornando uma string com os valores dos atributos da classe.
 
 public class Node {
-	private int ID;
+	private String ID;
     private String nomePessoa;
     private double notaPessoa;
 
@@ -28,7 +28,7 @@ public class Node {
     private Node anterior;
 
     public Node() {
-        this.ID = 0;
+        this.ID = "";
         this.nomePessoa = "";
         this.notaPessoa = 99.9;
 
@@ -36,7 +36,7 @@ public class Node {
         this.anterior = null;
     }
 
-    public Node (int id, String nome, double nota, Node prox, Node ant) {
+    public Node (String id, String nome, double nota, Node prox, Node ant) {
         this.ID = id;
         this.nomePessoa = nome;
         this.notaPessoa = nota;
@@ -44,7 +44,7 @@ public class Node {
         this.anterior = ant;
     }
     // Getters
-    public int getId () {
+    public String getId () {
         return this.ID;
     }
 
@@ -65,7 +65,7 @@ public class Node {
     }
 
     // Setters
-    public void setId (int id) {
+    public void setId (String id) {
         this.ID = id;
     }
 

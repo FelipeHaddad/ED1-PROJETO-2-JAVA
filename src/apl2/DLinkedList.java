@@ -46,7 +46,7 @@ public class DLinkedList {
 // OPERAÇÃO:		insert(<dados da pessoa>)
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no início da lista.
-	public void insert(int id, String nome, double nota) {
+	public void insert(String id, String nome, double nota) {
 		Node node = new Node(id, nome, nota, this.head, null);
 		Node aux = node.getProximo();
 		if (isEmpty()) {
@@ -61,7 +61,7 @@ public class DLinkedList {
 // OPERAÇÃO:		append(<dados da pessoa>)
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no final da lista.
-	public void append(int id, String nome, double nota) {
+	public void append(String id, String nome, double nota) {
 		Node node = new Node (id, nome, nota, null, null);
 
 		if (isEmpty()) {

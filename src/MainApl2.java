@@ -5,8 +5,13 @@
 //*************************** ATENÇÃO! ****************************
 // arquivo: src/MainApl2.java
 
-// TODO: Colocar a identificação dos(as) integrantes aqui.
-// TODO: Listar todas as referências consultadas para solucionar a atividade.
+/*
+ Felipe Haddad - 10437372
+ Beatriz Nobrega - 10435789
+ Carolina Lee - 10440304
+ Ana Julia Matilha - 10436655
+ */
+// Slides do prof.Dr.Ivan
 
 import apl2.DLinkedList;
 import apl2.LinkedListOriginal;
@@ -107,10 +112,10 @@ public class MainApl2 {
 		System.out.println(">>>>>>>>>> aboveAverageList.clear() >>>>>>>>>>\n" + aboveAverageList + "\n<<<<<<<<<< aboveAverageList.clear() <<<<<<<<<<\n");
 
 		DLinkedList testList = new DLinkedList();
-		// TODO: Inserir um nó no início da lista testList com os dados ("ABC", "John Doe", 4.7f).
-		// TODO: Inserir um nó no final da lista testList com os dados ("XYZ", "Jane Doe", 9.9f).
-		// TODO: Inserir um nó no início da lista testList com os dados ("321", "Test", 2.3f).
-		// TODO: Inserir um nó no final da lista testList com os dados ("Nothing", "Yada yada yada", 99.9f).
+		testList.insert("ABC", "John Doe", 4.7f);
+		testList.insert("XYZ", "Jane Doe", 9.9f);
+		testList.insert("321", "Test", 2.3f);
+		testList.insert("Nothing", "Yada yada yada", 99.9f);
 		System.out.println(">>>>>>>>>> testList >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList <<<<<<<<<<\n");
 		System.out.println("testList.getHead(): " + testList.getHead());
 		System.out.println("testList.getTail(): " + testList.getTail());
