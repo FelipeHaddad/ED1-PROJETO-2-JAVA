@@ -130,14 +130,14 @@ public class DLinkedList {
 //					a referência do nó removido.
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node removeNode(String idString) {
-		int id = Integer.parseInt(idString);
 		Node toRemove = head;
 		Node previous = null;
 
 		if (isEmpty()) {
 			return null;
 		}
-		while (toRemove != null && toRemove.getId() != id) {
+
+		while (toRemove != null && !toRemove.getId().equals(idString)) {
 			previous = toRemove;
 			toRemove = toRemove.getProximo();
 		}
@@ -155,10 +155,16 @@ public class DLinkedList {
 		}
 
 		previous.setProximo(toRemove.getProximo());
-		toRemove.getProximo().setAnterior(previous);
+		
+		if (toRemove.getProximo() != null) {
+			toRemove.getProximo().setAnterior(previous);
+		}
+
 		count--;
 
 		toRemove.setProximo(null);
+		toRemove.setAnterior(null); // opcional, mas bom para limpar referências
+
 		return toRemove;
 	}
 
@@ -184,11 +190,11 @@ public class DLinkedList {
 //					da lista.
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node getNode(String id) {
-		int idProcurado = Integer.parseInt(id);
+		//int idProcurado = Integer.parseInt(id);
 		Node aux = head;
 
 		while (aux != null) {
-			if (aux.getId() == idProcurado) {
+			if (aux.getId().equals(id)) {
 				return aux;
 			}
 			aux = aux.getProximo();
