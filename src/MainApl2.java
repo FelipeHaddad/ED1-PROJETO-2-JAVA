@@ -88,17 +88,35 @@ public class MainApl2 {
 		System.out.println(aboveAverageList);
 		System.out.println("<<<<<<<<<< Lista com notas acima da média <<<<<<<<<<\n");
 		
-		String contents = Operation.mapToString(fixedList);
+		StringBuilder contents = new StringBuilder();
 		System.out.println(">>>>>>>>>> Lista mapeada para uma única string >>>>>>>>>>");
 		System.out.println(contents);
 		System.out.println("<<<<<<<<<< Lista mapeada para uma única string <<<<<<<<<<\n");
-		
+		Node aux = aboveAverageList.getHead(); // ou o jeito que pega o primeiro nó
+		while (aux != null) {
+			// Aqui pegue o ID completo — tipo String "23.S1-111"
+			String idCompleto = aux.getId(); // tem que ser uma String com o valor completo!
+			String nome = aux.getNome();
+			double nota = aux.getNota();
+
+			contents.append(idCompleto)
+					.append(";")
+					.append(nome)
+					.append(";")
+					.append(nota)
+					.append("\n");
+
+			aux = aux.getProximo();
+		}
+
+		String conteudoFinal = contents.toString();
+
+		// Depois salva no arquivo
 		try (FileWriter fw = new FileWriter("dados.csv")) {
-			fw.write(contents);
+			fw.write(conteudoFinal);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 
 		
 		Node test1 = fixedList.getNode("23.S1-999");
