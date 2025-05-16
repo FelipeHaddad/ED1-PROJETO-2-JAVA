@@ -20,6 +20,8 @@ import apl2.Operation;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MainApl2 {
@@ -91,8 +93,12 @@ public class MainApl2 {
 		System.out.println(contents);
 		System.out.println("<<<<<<<<<< Lista mapeada para uma única string <<<<<<<<<<\n");
 		
+		try (FileWriter fw = new FileWriter("dados.csv")) {
+			fw.write(contents);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-		// TODO: Salvar o conteúdo da String contents em um arquivo chamado "dados.csv".
 
 		
 		Node test1 = fixedList.getNode("23.S1-999");
