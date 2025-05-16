@@ -1,5 +1,5 @@
 //*************************** ATENÇÃO! ****************************
-// O metodo main() deve ser alterado somente nos comentários TODO.
+// O metodo main() deve ser alterado somente nos comentários .
 // Todas as outras instruções devem permanecer intactas e o código
 // deve funcionar conforme descrito no enunciado da atividade.
 //*************************** ATENÇÃO! ****************************
@@ -55,11 +55,7 @@ public class MainApl2 {
 			list.append(id, nome, parteInteira, parteDecimal);
 			novaLista.append(String.valueOf(id), nome, nota);
 		}
-
 		scanner.close();
-
-		// TODO: Carregar o conteúdo do arquivo "dados.txt" e adicionar cada linha como um nó na LinkedListOriginal list.
-
 		
 		System.out.println(">>>>>>>>>> Dados originais (sistema legado) >>>>>>>>>>");
 		System.out.println(list);
