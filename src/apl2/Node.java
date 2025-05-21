@@ -20,7 +20,7 @@ package apl2;
 // {...}, retornando uma string com os valores dos atributos da classe.
 
 public class Node {
-	private String ID;
+    private String ID;
     private String nomePessoa;
     private double notaPessoa;
 
@@ -86,7 +86,19 @@ public class Node {
     }
 
     public String toString() {
-        return "23.S1-" + this.ID + ";" + this.nomePessoa + ";" + notaPessoa;
+        if (anterior == null && proximo == null) {
+            return "null" + " <- (23.S1-" + this.ID + ";" + this.nomePessoa + ";" + notaPessoa + ") " +
+                    "-> " + "23.S1-" + "null";
+        } else if (anterior == null) {
+            return "null" + " <- (23.S1-" + this.ID + ";" + this.nomePessoa + ";" + notaPessoa +
+                    ") " +
+                    "-> " + "23.S1-" + proximo.getId();
+        } else if (proximo == null) {
+            return "23.S1-" + anterior.getId() + " <- (23.S1-" + this.ID + ";" + this.nomePessoa + ";" + notaPessoa + ") " +
+                    "-> " + "null";
+        }
+        return "23.S1-" + anterior.getId() + " <- (23.S1-" + this.ID + ";" + this.nomePessoa + ";" + notaPessoa + ") " +
+                "-> " + "23.S1-" + proximo.getId();
     }
 
 }
