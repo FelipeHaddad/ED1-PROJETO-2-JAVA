@@ -86,19 +86,19 @@ public class Node {
     }
 
     public String toString() {
+        String formatted = String.format("%.1f", notaPessoa);
         if (anterior == null && proximo == null) {
-            return "null" + " <- (23.S1-" + this.ID + ";" + this.nomePessoa + ";" + notaPessoa + ") " +
-                    "-> " + "23.S1-" + "null";
+            return "null" + " <- (" + this.ID + ";" + this.nomePessoa + ";" + formatted + ") " +
+                    "-> " + "null";
         } else if (anterior == null) {
-            return "null" + " <- (23.S1-" + this.ID + ";" + this.nomePessoa + ";" + notaPessoa +
+            return "null" + " <- (" + this.ID + ";" + this.nomePessoa + ";" + formatted +
                     ") " +
-                    "-> " + "23.S1-" + proximo.getId();
+                    "-> " + proximo.getId();
         } else if (proximo == null) {
-            return "23.S1-" + anterior.getId() + " <- (23.S1-" + this.ID + ";" + this.nomePessoa + ";" + notaPessoa + ") " +
+            return anterior.getId() + " <- (" + this.ID + ";" + this.nomePessoa + ";" + formatted + ") " +
                     "-> " + "null";
         }
-        return "23.S1-" + anterior.getId() + " <- (23.S1-" + this.ID + ";" + this.nomePessoa + ";" + notaPessoa + ") " +
-                "-> " + "23.S1-" + proximo.getId();
+        return anterior.getId() + " <- (" + this.ID + ";" + this.nomePessoa + ";" + formatted + ") " +
+                "-> " + proximo.getId();
     }
-
 }
