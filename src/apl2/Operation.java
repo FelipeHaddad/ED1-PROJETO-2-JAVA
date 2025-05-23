@@ -30,10 +30,8 @@ public class Operation {
 			// Extrai os dados do nó original
 			//String id = atualOriginal.getId();
 			int idInt = atualOriginal.getId(); // pega o ID (int)
-
-			//String sb = new String(data);
-			//sb = sb + "23.S1-" + atualOriginal;
-			String id = String.valueOf(idInt);
+			//String id = String.valueOf(idInt);
+			String id = "23.S1-" + idInt;
 			String nome = atualOriginal.getNome();
 			int inteiro = atualOriginal.getInteiro();
 			int decimo = atualOriginal.getDecimo();
@@ -50,7 +48,6 @@ public class Operation {
 			novoNode.setId(id);
 			novoNode.setNome(nome);
 			novoNode.setNota(nota);
-			// ... Mapeie os outros campos conforme necessário para o seu sistema de notas
 
 			// Adiciona o novo nó à lista duplamente encadeada
 			novaLista.append(id, nome, nota);
