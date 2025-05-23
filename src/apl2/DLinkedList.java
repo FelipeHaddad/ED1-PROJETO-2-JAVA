@@ -243,18 +243,19 @@ public class DLinkedList {
 		stringb.append("(").append(count).append(") \n");
 
 		if (head == null) {
-			stringb.append("null");
+			return stringb.toString();
 		} else {
 			Node atualNode = head;
 			while (atualNode != null) {
 				Node ant = atualNode.getAnterior();
 				Node prox = atualNode.getProximo();
-				String idAnt = (ant == null) ? "null" : "23.S1-" + ant.getId();
-				String idProx = (prox == null) ? "null" : "23.S1-" + prox.getId();
-				stringb.append(idAnt).append(" <- (23.S1-")
+				String formatted = String.format("%.1f", atualNode.getNota());
+				String idAnt = (ant == null) ? "null <- (" : (ant.getId() + " <- (");
+				String idProx = (prox == null) ? "null" : (prox.getId());
+				stringb.append(idAnt)
 						.append(atualNode.getId()).append(";")
 						.append(atualNode.getNome()).append(";")
-						.append(atualNode.getNota()).append(") -> ")
+						.append(formatted).append(") -> ")
 						.append(idProx).append("\n");
 				atualNode = atualNode.getProximo();
 			}
