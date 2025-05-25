@@ -89,12 +89,16 @@ public class DLinkedList {
 			this.head = null;
 			this.tail = null;
 			count--;
+			removedNode.setProximo(null);
+			removedNode.setAnterior(null);
 			return removedNode;
 		}
 		Node removedNode = this.head;
 		this.head = head.getProximo();
 		this.head.setAnterior(null);
 		count--;
+		removedNode.setProximo(null);
+		removedNode.setAnterior(null);
 		return removedNode;
 	}
 
@@ -112,14 +116,16 @@ public class DLinkedList {
 			this.head = null;
 			this.tail = null;
 			count--;
+			removedTail.setProximo(null);
+			removedTail.setAnterior(null);
 			return removedTail;
 		}
-
 		Node removedTail = this.tail;
 		this.tail = tail.getAnterior();
 		this.tail.setProximo(null);
 		count--;
-
+		removedTail.setProximo(null);
+		removedTail.setAnterior(null);
 
 		return removedTail;
 	}
@@ -130,13 +136,6 @@ public class DLinkedList {
 //					a referência do nó removido.
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node removeNode(String idString) {
-		String id;
-		if (idString.startsWith("23.S1")) {
-			String[] partes = idString.split("-");
-			id = partes[1];
-		} else {
-			id = idString;
-		}
 		Node toRemove = head;
 		Node previous = null;
 
@@ -144,7 +143,7 @@ public class DLinkedList {
 			return null;
 		}
 
-		while (toRemove != null && !toRemove.getId().equals(id)) {
+		while (toRemove != null && !toRemove.getId().equals(idString)) {
 			previous = toRemove;
 			toRemove = toRemove.getProximo();
 		}
@@ -197,17 +196,9 @@ public class DLinkedList {
 //					da lista.
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node getNode(String idString) {
-		String id;
-		if (idString.startsWith("23.S1")) {
-			String[] partes = idString.split("-");
-			id = partes[1];
-		} else {
-			id = idString;
-		}
 		Node aux = head;
-
 		while (aux != null) {
-			if (aux.getId().equals(id)) {
+			if (aux.getId().equals(idString)) {
 				return aux;
 			}
 			aux = aux.getProximo();
@@ -243,15 +234,15 @@ public class DLinkedList {
 		stringb.append("(").append(count).append(") \n");
 
 		if (head == null) {
-			stringb.append("null");
+
 		} else {
 			Node atualNode = head;
 			while (atualNode != null) {
 				Node ant = atualNode.getAnterior();
 				Node prox = atualNode.getProximo();
-				String idAnt = (ant == null) ? "null" : "23.S1-" + ant.getId();
-				String idProx = (prox == null) ? "null" : "23.S1-" + prox.getId();
-				stringb.append(idAnt).append(" <- (23.S1-")
+				String idAnt = (ant == null) ? "null" : ant.getId();
+				String idProx = (prox == null) ? "null" : prox.getId();
+				stringb.append(idAnt).append(" <- (")
 						.append(atualNode.getId()).append(";")
 						.append(atualNode.getNome()).append(";")
 						.append(atualNode.getNota()).append(") -> ")
