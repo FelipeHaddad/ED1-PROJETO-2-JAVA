@@ -32,8 +32,8 @@ public class Operation {
 			int idInt = atualOriginal.getId(); // pega o ID (int)
 
 			//String sb = new String(data);
-			//sb = sb + "23.S1-" + atualOriginal;
 			String id = String.valueOf(idInt);
+			id = ("23.S1-" + id);
 			String nome = atualOriginal.getNome();
 			int inteiro = atualOriginal.getInteiro();
 			int decimo = atualOriginal.getDecimo();
