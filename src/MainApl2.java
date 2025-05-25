@@ -98,7 +98,7 @@ public class MainApl2 {
 		String conteudo = "";
 		while (aux != null) {
 			// Aqui pegue o ID completo — tipo String "23.S1-111"
-			String idCompleto = ("23.S1-" + aux.getId()); // tem que ser uma String com o valor
+			String idCompleto = (aux.getId()); // tem que ser uma String com o valor
 			// completo!
 			String nome = aux.getNome();
 			double nota = aux.getNota();
