@@ -29,6 +29,8 @@ public class MainApl2 {
 	public static void main(String[] args) throws FileNotFoundException {
 		LinkedListOriginal list = new LinkedListOriginal();
 		DLinkedList novaLista = new DLinkedList();
+		boolean loop = true;
+		int opcao = 0;
 
 		// Leitura do arquivo dados.txt
 		File arquivo = new File("dados.txt");
@@ -57,7 +59,6 @@ public class MainApl2 {
 			list.append(id, nome, parteInteira, parteDecimal);
 			novaLista.append(String.valueOf(id), nome, nota);
 		}
-		scanner.close();
 
 		System.out.println(">>>>>>>>>> Dados originais (sistema legado) >>>>>>>>>>");
 		System.out.println(list);
@@ -158,6 +159,83 @@ public class MainApl2 {
 		System.out.println(">>>>>>>>>> testList >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList <<<<<<<<<<\n");
 		testList.clear();
 		System.out.println(">>>>>>>>>> testList.clear() >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList.clear() <<<<<<<<<<\n");
+
+		Scanner scanner2 = new Scanner(System.in);
+		while (loop) {
+			System.out.println("\nSistema Conversor de Notas\n" +
+					"1) Dados originais: lê arquivo dados.txt e apresenta todos os dados do Sistema de Notas Legado;\n" +
+					"2) Dados convertidos: gera arquivo dados.csv e apresenta todos os dados do Sistema de Notas Atualizado;\n" +
+					"3) Lista notas filtradas válidas: apresenta os dados somente das notas válidas filtradas;\n" +
+					"4) Lista notas filtradas inválidas: apresenta os dados somente das notas filtradas pela ausência de notas”;\n" +
+					"5) Média de notas válidas: apresenta a média das notas válidas filtradas;\n" +
+					"6) Notas acima da média: apresenta os dados para as notas acima da média;\n" +
+					"7) Lista mapeada para uma única string: apresenta a String contendo os dados mapeados;\n" +
+					"8) Finaliza sistema.\n" +
+					"Insira sua opção: ");
+					opcao = scanner2.nextInt();
+					DLinkedList listaFiltradaNotasValidas = Operation.filterRemoveNonGraded(fixedList);
+					average = Operation.reduce(listaFiltradaNotasValidas);
+
+			if (opcao == 1) {
+						System.out.println("Dados Originais : \n");
+						System.out.println(list);
+					}
+					else if (opcao == 2) {
+						arquivo = new File("dados.txt");
+						Scanner scanner3 = new Scanner(arquivo);
+
+						// Começa a ler o arquivo enquanto não chegar no fimw
+						while (scanner3.hasNextLine()) {
+							String linha = scanner3.nextLine();
+							//System.out.println(linha);
+
+							// Divide os dados da linha pelo delimitador "#"
+							String[] partes = linha.split("#");
+
+							// Parse manual dos campos
+							int id = Integer.parseInt(partes[0]);
+							String nome = partes[1];
+							int parteInteira = Integer.parseInt(partes[2]);
+							int parteDecimal = Integer.parseInt(partes[3]);
+							double nota;
+
+							if (parteInteira < 0 || parteDecimal < 0) {
+								nota = 99.9;
+							} else {
+								nota = Double.parseDouble(parteInteira + "." + parteDecimal);
+							}
+							list.append(id, nome, parteInteira, parteDecimal);
+							novaLista.append(String.valueOf(id), nome, nota);
+						}
+						System.out.println("Dados Convertidos: \n" + fixedList);
+					}
+					else if (opcao == 3) {
+						System.out.println("Lista notas filtradas válidas: \n" + listaFiltradaNotasValidas);
+					}
+					else if (opcao == 4) {
+						DLinkedList listaFiltradaNotasInvalidas = Operation.filterRemoveGraded(fixedList);
+						System.out.println("Lista notas filtradas inválidas: \n" + listaFiltradaNotasInvalidas);
+					}
+					else if (opcao == 5) {
+						System.out.println("Media das notas validas: \n" + average);
+					}
+					else if (opcao == 6) {
+						DLinkedList listaNotasAcimaMedia = Operation.filterRemoveBelowAverage(filteredGradedList, average);
+						System.out.println("Lista notas acima da média: \n" + listaNotasAcimaMedia);
+					}
+					else if (opcao == 7) {
+						String listaUnicaString = Operation.mapToString(fixedList);
+						System.out.println("Lista mapeada para uma unica string: \n" + listaUnicaString);
+					}
+					else if (opcao == 8) {
+						System.out.println("\nSistema Finalizado");
+						loop = false;
+					}
+					else {
+						System.out.println("\nDigite uma opcao valida!\n");
+			}
+		}
+		scanner.close();
 	}
 
 }
